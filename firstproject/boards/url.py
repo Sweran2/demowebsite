@@ -1,0 +1,12 @@
+from django.urls import path
+from . import views
+# dot means from current file I am standing on which is url
+
+urlpatterns = [
+
+    path('', views.index, name='index'),
+    path('boards/<int:id>/', views.boards_topic, name='boards_topic'),
+    path('boards/<int:id>/new/', views.new_topic, name='new_topic'),
+    path('boards/<int:id>/topics/<int:topic_id>/', views.topic_posts, name='topic_posts'),
+    path('boards/<int:id>/topics/<int:topic_id>/reply/', views.reply_topic, name='reply_topic')
+]

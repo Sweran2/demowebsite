@@ -1,0 +1,25 @@
+{%  extends 'base.html' %}
+{% load static %}
+{% block title %} {{ topic.subject }} ->> Post Reply{% endblock %}
+
+  {% block boardcrumb %}
+
+     <li class="breadcrumb-item"> <a href = "{% url 'index' %}"> Boards </a> </li>
+        <li class="breadcrumb-item"> <a href = "{% url 'boards_topic' topic.board.pk %}">{{ topic.board.name }} </a></li>
+            <li class="breadcrumb-item active"><a href="{% url 'topic_posts' topic.board.pk topic.pk %}">{{ topic.subject }}</a> </li>
+            <li class="breadcrumb-item active">Post Reply</li>
+        {% endblock %}
+
+{% block content %}
+ <form method="POST" >
+     {% csrf_token %}
+
+     {% include 'includes/form.html' %}
+            <button type="submit" class="btn btn-success">Submit</button>
+
+ </form>
+
+
+
+{% endblock %}
+

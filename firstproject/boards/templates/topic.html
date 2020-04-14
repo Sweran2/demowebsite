@@ -1,0 +1,57 @@
+
+{%  extends 'base.html' %}
+<!--{% load static %}-->
+<!--<html lang="en">-->
+<!--<head>-->
+<!--    <meta charset="UTF-8">-->
+<!--    <title></title>-->
+    {% block title %} {{ board.name }} - {{block.super}} {% endblock %}
+<!--    <link rel="stylesheet" href = "{% static 'css/bootstrap.min.css' %}">-->
+
+<!--</head>-->
+<!--<body>-->
+
+<!--<div class = "container">-->
+<!--    <ol class="breadcrumb my-4">-->
+        {% block boardcrumb %}
+
+     <li class="breadcrumb-item "> <a href = "{% url 'index' %}"> Boards </a> </li>
+        <li class="breadcrumb-item active"> {{ board.name }}  </li>
+
+        {% endblock %}
+<!--    </ol>-->
+
+    {% block content %}
+
+<div class="mb-4">
+     <a class="btn btn-primary" href="{% url 'new_topic' board.pk %}" role="button">New Topic</a>
+</div>
+
+    <table class="table">
+        <thead class="thead-inverse" >
+         <tr>
+        <th>Topics</th>
+        <th>Created by</th>
+        <th>Replies</th>
+       <th>Created date</th>
+      </tr>
+         </thead>
+
+    <!--this is special for django only you can program in html !!-->
+    {% for topic in board.topics.all %}
+        <tr>
+            <td>
+                <a href=" {% url 'topic_posts' board.pk topic.pk %} "> {{topic.subject}} </a>
+            </td>
+            <td>{{topic.created_by.username}}</td>
+            <td>0</td>
+            <td>{{topic.created_dt}}</td>
+        </tr>
+    {% endfor %}
+    </table>
+
+    {% endblock %}
+
+<!--</div>-->
+<!--</body>-->
+<!--</html>-->
