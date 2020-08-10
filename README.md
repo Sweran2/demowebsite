@@ -7,4 +7,5 @@ Using Django Web framework.
 # Original Project
 
 You can go check and run the complete project from this URL
+\n
 [https://github.com/sibtc/django-beginners-guide/tree/v0.4-lw](url)
